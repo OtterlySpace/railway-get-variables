@@ -29,19 +29,25 @@ Get variables from a Railway service
 ```yaml
 name: Get variables from Railway
 
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-	deploy:
-		runs-on: ubuntu-latest
-		container: ghcr.io/railwayapp/cli:latest
-		env:
-			RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-		steps:
-		- name: Get variables
-			uses: otterly/railway-get-variables@v1
-			with:
-				TEAM_NAME: my-team
-				PROJECT_NAME: my-project
-				ENV_NAME: my-env
-				SERVICE_NAME: my-service
-				VARIABLES_NAMES: MY_VARIABLE_1,MY_VARIABLE_2
+  deploy:
+    runs-on: ubuntu-latest
+    container: ghcr.io/railwayapp/cli:latest
+    env:
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    steps:
+      - name: Get variables
+        uses: OtterlySpace/railway-get-variables@v1
+        with:
+          TEAM_NAME: my-team
+          PROJECT_NAME: my-project
+          ENV_NAME: my-env
+          SERVICE_NAME: my-service
+          VARIABLES_NAMES: MY_VARIABLE_1,MY_VARIABLE_2
+
 ```
