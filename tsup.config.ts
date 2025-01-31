@@ -7,7 +7,7 @@ export default defineConfig({
 	minify: true,
 	metafile: false,
 	bundle: true,
-	treeshake: true,
+	treeshake: false,
 	sourcemap: false,
 	target: "esnext",
 	outDir: "dist",

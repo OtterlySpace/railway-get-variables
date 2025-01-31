@@ -1,5 +1,5 @@
-import core from "@actions/core"
-import exec from "@actions/exec"
+import * as core from "@actions/core"
+import * as exec from "@actions/exec"
 
 const TEAM_NAME = core.getInput("TEAM_NAME")
 const PROJECT_NAME = core.getInput("PROJECT_NAME")
