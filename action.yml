@@ -1,0 +1,21 @@
+name: "Railway Get Variables"
+description: "Get variables from a Railway service"
+inputs:
+    TEAM_NAME:
+        description: "The name of the team to get variables from"
+        required: true
+    PROJECT_NAME:
+        description: "The name of the project to get variables from"
+        required: true
+    ENV_NAME:
+        description: "The name of the environment to get variables from"
+        required: true
+    SERVICE_NAME:
+        description: "The name of the service to get variables from"
+        required: true
+    VARIABLES_NAMES:
+        description: "The name of the variables to get. Formatted as an array of strings"
+        required: true
+runs:
+  using: "node20"
+  main: "dist/main.cjs"

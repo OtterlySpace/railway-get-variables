@@ -1,0 +1,46 @@
+{
+  "name": "railway-get-variables",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OtterlySpace/railway-get-variables.git"
+  },
+  "author": "Otterly Space",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OtterlySpace/railway-get-variables/issues"
+  },
+  "homepage": "https://github.com/OtterlySpace/railway-get-variables#readme",
+  "scripts": {
+    "start": "node dist/main",
+    "start:dev": "tsup --watch",
+    "typecheck": "tsc",
+    "clean": "rm -rf dist node_modules",
+    "build": "tsup",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write './src/**/*'"
+  },
+  "private": true,
+  "devDependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/exec": "^1.1.1",
+    "@types/eslint": "^8.56.10",
+    "@types/node": "^22.12.0",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.4.2",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3"
+  },
+  "ca8aMetadata": {
+    "initVersion": "1.5.0"
+  },
+  "packageManager": "yarn@4.6.0"
+}
