@@ -71,6 +71,8 @@ async function linkProject() {
 			PROJECT_NAME,
 			"--environment",
 			ENV_NAME,
+			"--service",
+			SERVICE_NAME,
 			"--json"
 		])
 		if (error) {
