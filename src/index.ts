@@ -13,7 +13,7 @@ let railwayPath: string
 async function runCommand(command: string, args: string[] = []) {
 	let output = ""
 	let error = ""
-	const options = {
+	const options: exec.ExecOptions = {
 		listeners: {
 			stdout: (data: Buffer) => {
 				output += data.toString()
@@ -21,7 +21,8 @@ async function runCommand(command: string, args: string[] = []) {
 			stderr: (data: Buffer) => {
 				error += data.toString()
 			}
-		}
+		},
+		silent: true
 	}
 	await exec.exec(command, args, options)
 	return { output, error }
