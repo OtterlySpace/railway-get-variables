@@ -1,11 +1,14 @@
 import * as core from "@actions/core"
 import * as exec from "@actions/exec"
+import * as io from "@actions/io"
 
 const TEAM_NAME = core.getInput("TEAM_NAME")
 const PROJECT_NAME = core.getInput("PROJECT_NAME")
 const ENV_NAME = core.getInput("ENV_NAME")
 const SERVICE_NAME = core.getInput("SERVICE_NAME")
 const VARIABLES_NAMES = core.getInput("VARIABLES_NAMES")
+
+let railwayPath: string
 
 async function runCommand(command: string, args: string[] = []) {
 	let output = ""
@@ -37,7 +40,7 @@ function exportVariables(variablesNames: string[], variables: Record<string, str
 
 async function getServiceVariables(serviceName: string) {
 	try {
-		const { output, error } = await runCommand("railway", [
+		const { output, error } = await runCommand(railwayPath, [
 			"variables",
 			"--environment",
 			ENV_NAME,
@@ -60,7 +63,7 @@ async function getServiceVariables(serviceName: string) {
 
 async function linkProject() {
 	try {
-		const { output, error } = await runCommand("railway", [
+		const { output, error } = await runCommand(railwayPath, [
 			"link",
 			"--team",
 			TEAM_NAME,
@@ -82,12 +85,7 @@ async function linkProject() {
 }
 
 async function run() {
-	const { error } = await runCommand("which", ["railway"])
-	if (error) {
-		console.error(error)
-		core.setFailed("Railway CLI not found")
-		return
-	}
+	railwayPath = await io.which("railway", true)
 
 	await linkProject()
 
